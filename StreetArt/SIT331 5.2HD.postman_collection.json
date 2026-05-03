@@ -1,0 +1,702 @@
+{
+  "info": {
+    "_postman_id": "1b52d24b-98d1-431e-b576-f1d3ec7351d6",
+    "name": "SIT331 5.2HD",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "22935197",
+    "_collection_link": "https://go.postman.co/collection/22935197-1b52d24b-98d1-431e-b576-f1d3ec7351d6?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "GET Artworks",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is an array\", function () {\r",
+              "    pm.expect(pm.response.json()).to.be.an(\"array\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/Artworks",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "Artworks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Location",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 201 Created\", function () {\r",
+              "    pm.response.to.have.status(201);\r",
+              "});\r",
+              "\r",
+              "const location = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Response is an object\", function () {\r",
+              "    pm.expect(location).to.be.an(\"object\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Created location has required properties\", function () {\r",
+              "    pm.expect(location).to.have.property(\"id\");\r",
+              "    pm.expect(location).to.have.property(\"name\");\r",
+              "    pm.expect(location).to.have.property(\"latitude\");\r",
+              "    pm.expect(location).to.have.property(\"longitude\");\r",
+              "});\r",
+              "\r",
+              "\r",
+              "const requestBody = JSON.parse(pm.request.body.raw);\r",
+              "\r",
+              "pm.test(\"Created location values match request body\", function () {\r",
+              "    pm.expect(location.name).to.eql(requestBody.name);\r",
+              "    pm.expect(Number(location.latitude)).to.eql(Number(requestBody.latitude));\r",
+              "    pm.expect(Number(location.longitude)).to.eql(Number(requestBody.longitude));\r",
+              "});\r",
+              "\r",
+              "// 변수 저장\r",
+              "pm.environment.set(\"locationId\", location.id);\r",
+              "pm.environment.set(\"deletedLocationId\", location.id);\r",
+              "pm.environment.set(\"locationId\", location.id);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"State Library Victoria\",\r\n  \"latitude\": -37.8099,\r\n  \"longitude\": 144.9653\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/Locations",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "Locations"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Artwork",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 201 Created\", function () {\r",
+              "    pm.response.to.have.status(201);\r",
+              "});\r",
+              "\r",
+              "const artwork = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Response is an object\", function () {\r",
+              "    pm.expect(artwork).to.be.an(\"object\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Created artwork has required properties\", function () {\r",
+              "    pm.expect(artwork).to.have.property(\"id\");\r",
+              "    pm.expect(artwork).to.have.property(\"title\");\r",
+              "    pm.expect(artwork).to.have.property(\"artistName\");\r",
+              "    pm.expect(artwork).to.have.property(\"description\");\r",
+              "    pm.expect(artwork).to.have.property(\"imageUrl\");\r",
+              "    pm.expect(artwork).to.have.property(\"status\");\r",
+              "    pm.expect(artwork).to.have.property(\"locationId\");\r",
+              "});\r",
+              "\r",
+              "const requestBody = JSON.parse(pm.request.body.raw);\r",
+              "\r",
+              "pm.test(\"Created artwork values match request body\", function () {\r",
+              "    pm.expect(artwork.title).to.eql(requestBody.title);\r",
+              "    pm.expect(artwork.artistName).to.eql(requestBody.artistName);\r",
+              "    pm.expect(artwork.description).to.eql(requestBody.description);\r",
+              "    pm.expect(artwork.imageUrl).to.eql(requestBody.imageUrl);\r",
+              "    pm.expect(artwork.status).to.eql(requestBody.status);\r",
+              "    pm.expect(Number(artwork.locationId)).to.eql(Number(requestBody.locationId));\r",
+              "});\r",
+              "\r",
+              "pm.environment.set(\"artworkId\", artwork.id);\r",
+              "pm.environment.set(\"deletedArtworkId\", artwork.id);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Laneway Story\",\r\n  \"artistName\": \"Test Artist\",\r\n  \"description\": \"A test artwork for the StreetArt API.\",\r\n  \"imageUrl\": \"https://example.com/artwork.jpg\",\r\n  \"status\": \"Active\",\r\n  \"locationId\": {{locationId}}\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/Artworks",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "Artworks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "All Artworks",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200 OK\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is an array\", function () {\r",
+              "    pm.expect(pm.response.json()).to.be.an(\"array\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/Artworks",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "Artworks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Artwork by ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200 OK\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const artwork = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Returned artwork id matches environment id\", function () {\r",
+              "    pm.expect(Number(artwork.id)).to.eql(Number(pm.environment.get(\"artworkId\")));\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/Artworks/{{artworkId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "Artworks",
+            "{{artworkId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT Artwork",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200 OK or 204 No Content\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"id\": {{artworkId}},\r\n  \"title\": \"Updated Laneway Story\",\r\n  \"artistName\": \"Updated Test Artist\",\r\n  \"description\": \"Updated artwork description.\",\r\n  \"imageUrl\": \"https://example.com/updated-artwork.jpg\",\r\n  \"status\": \"Restored\",\r\n  \"locationId\": {{locationId}}\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/Artworks/{{artworkId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "Artworks",
+            "{{artworkId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE Artwork",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200 OK or 204 No Content\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"id\": {{artworkId}},\r\n  \"title\": \"Updated Laneway Story\",\r\n  \"artistName\": \"Updated Test Artist\",\r\n  \"description\": \"Updated artwork description.\",\r\n  \"imageUrl\": \"https://example.com/updated-artwork.jpg\",\r\n  \"status\": \"Restored\",\r\n  \"locationId\": {{locationId}}\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/Artworks/{{deletedArtworkId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "Artworks",
+            "{{deletedArtworkId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Nearby",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200 OK\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is an array\", function () {\r",
+              "    pm.expect(pm.response.json()).to.be.an(\"array\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/Discovery/nearby?lat=-37.8179&lng=144.9690&radius=1000",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "Discovery",
+            "nearby"
+          ],
+          "query": [
+            {
+              "key": "lat",
+              "value": "-37.8179"
+            },
+            {
+              "key": "lng",
+              "value": "144.9690"
+            },
+            {
+              "key": "radius",
+              "value": "1000"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET All Locations",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const locations = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Response is an array\", function () {\r",
+              "    pm.expect(locations).to.be.an(\"array\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/Locations",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "Locations"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Location by ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200 OK\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const location = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Returned location matches requested ID\", function () {\r",
+              "    pm.expect(Number(location.id)).to.eql(Number(pm.environment.get(\"locationId\")));\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/Locations/{{locationId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "Locations",
+            "{{locationId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT Update Location",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200 OK or 204 No Content\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"id\": {{locationId}},\r\n  \"name\": \"Updated Melbourne Location\",\r\n  \"latitude\": -37.8100,\r\n  \"longitude\": 144.9600\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/Locations/{{locationId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "Locations",
+            "{{locationId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE Location",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200 OK or 204 No Content\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/Locations/{{deletedLocationId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "Locations",
+            "{{deletedLocationId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Security Cameras",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200 OK\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const cameras = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Response is an array\", function () {\r",
+              "    pm.expect(cameras).to.be.an(\"array\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/Security/cameras",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "Security",
+            "cameras"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Security Camera",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 201 Created\", function () {\r",
+              "    pm.response.to.have.status(201);\r",
+              "});\r",
+              "\r",
+              "const camera = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Created camera has required properties\", function () {\r",
+              "    pm.expect(camera).to.have.property(\"id\");\r",
+              "    pm.expect(camera).to.have.property(\"name\");\r",
+              "    pm.expect(camera).to.have.property(\"latitude\");\r",
+              "    pm.expect(camera).to.have.property(\"longitude\");\r",
+              "});\r",
+              "\r",
+              "const requestBody = JSON.parse(pm.request.body.raw);\r",
+              "\r",
+              "pm.test(\"Created camera values match request body\", function () {\r",
+              "    pm.expect(camera.name).to.eql(requestBody.name);\r",
+              "    pm.expect(Number(camera.latitude)).to.eql(Number(requestBody.latitude));\r",
+              "    pm.expect(Number(camera.longitude)).to.eql(Number(requestBody.longitude));\r",
+              "});\r",
+              "\r",
+              "pm.environment.set(\"cameraId\", camera.id);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Federation Square CCTV\",\r\n  \"latitude\": -37.8179,\r\n  \"longitude\": 144.9690\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/Security/cameras",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "Security",
+            "cameras"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Artworks Risk",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200 OK\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const risks = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Response is an array\", function () {\r",
+              "    pm.expect(risks).to.be.an(\"array\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/Security/artworks-risk",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "Security",
+            "artworks-risk"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

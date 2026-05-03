@@ -1,0 +1,6 @@
+@StreetArt_HostAddress = http://localhost:5098
+
+GET {{StreetArt_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
