@@ -130,6 +130,15 @@ The map integration helped demonstrate how location data can be used in a meanin
 
 ---
 
+<img width="1882" height="1420" alt="image" src="https://github.com/user-attachments/assets/35613c22-ecf0-4b43-8653-c8650aeaa1d9" />
+## API Documentation
+
+Swagger is used to explore and test the API.
+
+I added simple XML comments to the controllers so that each endpoint shows a short description directly in Swagger.
+
+This made it easier to quickly understand what each API does while testing.
+
 ## Author
 
 Eunjin Kim  
