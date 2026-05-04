@@ -10,7 +10,9 @@ Although the project is named StreetArt, it is designed around an Aboriginal art
 
 ---
 ##  Simple Demo Video
+
 https://deakin.au.panopto.com/Panopto/Pages/Viewer.aspx?id=339c77f0-4938-4f0b-bcc9-b44000af07f0
+
 This short video shows how the system works, including:
 - Creating artworks and locations using Postman
 - Viewing data through Swagger API documentation
