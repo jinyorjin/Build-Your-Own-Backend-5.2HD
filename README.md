@@ -146,15 +146,22 @@ The map integration helped demonstrate how location data can be used in a meanin
 Swagger is used to explore and test the API.
 
 I added simple XML comments to the controllers so that each endpoint shows a short description directly in Swagger.
+
+---
+
 ### Database Diagram
 <img width="2816" height="1536" alt="database diagram" src="https://github.com/user-attachments/assets/82c68b9b-d4a5-4de8-a503-09eb6692faf0" />
 The database diagram shows a one-to-many relationship between Location and Artwork, where each artwork belongs to a specific location.
+
 ---
+
 ### System Architecture
 <img width="2816" height="1536" alt="system" src="https://github.com/user-attachments/assets/e7b1c86a-0617-41ac-bb4e-d6079761a38c" />
 The system architecture shows how the React frontend communicates with the ASP.NET Core API, which then interacts with PostgreSQL through Entity Framework. Swagger and Newman are used for documentation and testing.
 This made it easier to quickly understand what each API does while testing.
+
 ---
+
 ## Author
 
 Eunjin Kim  
