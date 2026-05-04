@@ -6,6 +6,8 @@ This project is my implementation of a backend service for an Aboriginal art gal
 
 The main idea of this project is to allow users to manage artworks and explore them using location-based features. Instead of only testing APIs, I wanted to show how the data could be used in a more practical way through a map interface.
 
+Although the project is named StreetArt, it is designed around an Aboriginal art gallery discovery system. The name StreetArt is used mainly for the API/project, while the actual implementation focuses on artworks, locations, discovery, and security as the main bounded contexts.
+
 ---
 
 ## What I Implemented
