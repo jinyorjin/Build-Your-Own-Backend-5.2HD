@@ -12,17 +12,17 @@ The main idea of this project is to allow users to manage artworks and explore t
 
 ### Backend (ASP.NET Core Web API)
 
-- Created a REST API for artworks and locations
-- Used PostgreSQL with Entity Framework Core
-- Implemented CRUD operations for artworks
-- Added a nearby discovery endpoint:
-  
+- Created a REST API for artworks and locations  
+- Used PostgreSQL with Entity Framework Core  
+- Implemented CRUD operations for artworks  
+- Added a nearby discovery endpoint:  
+
 
 GET /api/discovery/nearby
 
 
-- Used latitude and longitude to calculate distances
-- Prevented JSON circular reference issues
+- Used latitude and longitude to calculate distances  
+- Prevented JSON circular reference issues  
 
 ---
 
@@ -30,34 +30,33 @@ GET /api/discovery/nearby
 <img width="1293" height="1263" alt="image" src="https://github.com/user-attachments/assets/71bb4946-297f-4755-9c9b-d6773b00cfb6" />
 
 
-- Built a full Postman collection
-- Tested all endpoints:
-- Create Artwork
-- Get All Artworks
-- Get by ID
-- Update Artwork
-- Delete Artwork
-- Nearby search
-- Exported:
-- Postman collection
-- Environment file
-- Ran automated tests using Newman
-- Generated HTML test report
-
+- Built a full Postman collection  
+- Tested all endpoints:  
+  - Create Artwork  
+  - Get All Artworks  
+  - Get by ID  
+  - Update Artwork  
+  - Delete Artwork  
+  - Nearby search  
+- Exported:  
+  - Postman collection  
+  - Environment file  
+- Ran automated tests using Newman  
+- Generated HTML test report  
 ---
 
 ### Frontend (React)
 <img width="1891" height="1471" alt="image" src="https://github.com/user-attachments/assets/c22781d7-a464-4adc-8220-275e6dae01cb" />
 
-- Built a simple React app using Vite
-- Focused on a clean map-based layout instead of a form-heavy UI
-- Integrated Google Maps API
-- Displayed artworks as markers using location data
+- Built a simple React app using Vite  
+- Focused on a clean map-based layout instead of a form-heavy UI  
+- Integrated Google Maps API  
+- Displayed artworks as markers using location data  
 - Clicking an artwork:
-- pans and zooms the map
-- shows location visually
-- Added nearby search using coordinates and radius
-- Made the layout responsive
+  - pans and zooms the map  
+  - shows location visually  
+- Added nearby search using coordinates and radius  
+- Made the layout responsive  
 
 ---
 
