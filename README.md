@@ -9,6 +9,13 @@ The main idea of this project is to allow users to manage artworks and explore t
 Although the project is named StreetArt, it is designed around an Aboriginal art gallery discovery system. The name StreetArt is used mainly for the API/project, while the actual implementation focuses on artworks, locations, discovery, and security as the main bounded contexts.
 
 ---
+##  Simple Demo Video
+https://deakin.au.panopto.com/Panopto/Pages/Viewer.aspx?id=339c77f0-4938-4f0b-bcc9-b44000af07f0
+This short video shows how the system works, including:
+- Creating artworks and locations using Postman
+- Viewing data through Swagger API documentation
+- Displaying artworks on the map using the React frontend
+
 
 ## What I Implemented
 
