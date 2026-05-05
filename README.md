@@ -153,7 +153,7 @@ I added simple XML comments to the controllers so that each endpoint shows a sho
 <img width="2816" height="1536" alt="database diagram" src="https://github.com/user-attachments/assets/82c68b9b-d4a5-4de8-a503-09eb6692faf0" />
 The database diagram shows a one-to-many relationship between Location and Artwork, where each artwork belongs to a specific location.
 <img width="680" height="730" alt="image" src="https://github.com/user-attachments/assets/c0448cff-9b60-4636-89f7-1af56cfa03ec" />
-
+The first diagram is a simplified design diagram, and the second image is the actual database structure checked in DBeaver after applying Entity Framework Core migrations.
 ---
 
 ### System Architecture
