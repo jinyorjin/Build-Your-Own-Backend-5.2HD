@@ -9,6 +9,25 @@ The main idea of this project is to allow users to manage artworks and explore t
 Although the project is named StreetArt, it is designed around an Aboriginal art gallery discovery system. The name StreetArt is used mainly for the API/project, while the actual implementation focuses on artworks, locations, discovery, and security as the main bounded contexts.
 
 ---
+## Demo Videos
+
+I recorded two demo videos for this project.
+
+### Demo Video 1: System Demo
+
+This video shows the main system functionality, including Postman API testing, CRUD operations, nearby search, security endpoints, the React frontend with Google Maps, Swagger documentation, database/system diagrams, and Newman test results.
+
+Video link:  
+https://deakin.au.panopto.com/Panopto/Pages/Viewer.aspx?id=5287c9e2-a647-4bdd-9f33-b441016c82de
+
+### Demo Video 2: Backend Code Walkthrough
+
+This video explains the backend project structure in Visual Studio and the key code implementation, including controllers, models, AppDbContext, Entity Framework migrations, XML comments, Haversine nearby search logic, and the simple artwork risk calculation.
+
+Video link:  
+https://deakin.au.panopto.com/Panopto/Pages/Viewer.aspx?id=01f7e848-4d48-4b3c-af14-b441016c445b
+---
+
 ##  Simple Demo Video
 
 https://deakin.au.panopto.com/Panopto/Pages/Viewer.aspx?id=339c77f0-4938-4f0b-bcc9-b44000af07f0
